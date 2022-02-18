@@ -6,14 +6,14 @@ const models = require('./models');
 const typeDefs = require('./typeDefs');
 const resolvers = require('./resolvers');
 
-const me = models.users[0];
+// const me = models.users[0];
 
 const server = new ApolloServer({
     typeDefs,
     resolvers,
     context: {
         models,
-        me,
+        // me,
     },
 });
 server.start().then(() => {

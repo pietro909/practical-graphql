@@ -1,23 +1,18 @@
-let users = [
-    {
-        id: '1',
-        name: 'Blu',
-        cars: ['1', '2'],
-    },
-    { id: '2', name: 'Zeno', cars: ['3'] },
-    { id: '3', name: 'Romeo', cars: [] },
-];
+const { sequelize } = require('./dabatase');
+const { DataTypes } = require('sequelize');
 
-let cars = [
-    {
-        id: '1',
-        make: 'Fiat',
-        model: 'Panda',
-        color: 'blue',
-        ownedBy: '1',
-    },
-    { id: '2', make: 'Renault', model: 'Clio', color: 'dark green', ownedBy: '1' },
-    { id: '3', make: 'Fiat', model: 'Tipo', color: 'red', ownedBy: '2' },
-];
+const UserModel = require('./user')(sequelize, DataTypes);
+const CarModel = require('./car')(sequelize, DataTypes);
 
-module.exports = { users, cars };
+const models = {
+    User: UserModel,
+    Car: CarModel,
+};
+
+Object.keys(models).forEach((key) => {
+    if ('associate' in models[key]) {
+        models[key].associate(models);
+    }
+});
+
+module.exports = models;
