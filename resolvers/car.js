@@ -5,7 +5,7 @@ const resolvers = {
     },
     Mutation: {
         makeCar: (parent, { model, make, color, ownedBy }, { models }) =>
-            models.Car.create({ id: nextId, model, make, color, ownedBy }),
+            models.Car.create({ model, make, color, userId: ownedBy }),
         removeCar: (parent, { id }, { models }) => models.Car.destroy({ where: { id } }),
     },
     Car: {
