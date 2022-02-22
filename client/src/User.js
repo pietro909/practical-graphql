@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Query } from '@apollo/client/react/components';
 import query from './query';
 import AddUser from './AddUser';
+import RemoveUser from './RemoveUser';
 
 export default class User extends Component {
     render() {
@@ -20,6 +21,8 @@ export default class User extends Component {
                                     {data.users.map(({ id, name, cars }) => (
                                         <li key={id}>
                                             {name}
+                                            &nbsp;
+                                            <RemoveUser id={id} />
                                             <ul>
                                                 {cars.length !== 0 ? (
                                                     cars.map(({ id, make, model, color }) => (
