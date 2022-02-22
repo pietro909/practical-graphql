@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
         name: { type: DataTypes.STRING },
         username: { type: DataTypes.STRING, unique: true, validate: { notEmpty: true } },
         password: { type: DataTypes.STRING, validate: { notEmpty: true }, len: [4, 16] },
+        photo: { type: DataTypes.STRING },
     });
 
     User.associate = (models) => {
