@@ -11,13 +11,14 @@ const typeDefs = gql`
     }
 
     extend type Mutation {
-        makeUser(name: String!): User!
+        registerUser(name: String!, username: String!, password: String!): User
         removeUser(id: ID!): Boolean
     }
 
     type User {
         id: ID!
         name: String!
+        username: String!
         cars: [Car!]!
     }
 `;

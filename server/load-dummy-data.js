@@ -5,6 +5,8 @@ const createData = async () => {
     await models.User.create(
         {
             name: 'Blu',
+            username: 'blu',
+            password: 'blu1',
             cars: [
                 {
                     make: 'Fiat',
@@ -18,6 +20,8 @@ const createData = async () => {
     await models.User.create(
         {
             name: 'Zeno',
+            username: 'zeno',
+            password: 'zeno1',
             cars: [
                 {
                     make: 'Fiat',
@@ -30,7 +34,7 @@ const createData = async () => {
     );
 };
 
-sequelize.sync().then(async () => {
+sequelize.sync({ force: true }).then(async () => {
     try {
         await createData();
         process.exit(1);

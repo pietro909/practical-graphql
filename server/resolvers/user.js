@@ -5,7 +5,8 @@ const resolvers = {
         user: (_, { id }, { models }) => models.User.findByPk(id),
     },
     Mutation: {
-        makeUser: (parent, { name }, { models }) => models.User.create({ name }),
+        registerUser: (parent, { name, username, password }, { models }) =>
+            models.User.create({ name, username, password }),
         removeUser: (parent, { id }, { models }) => models.User.destroy({ where: { id } }),
     },
     User: {
