@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { Query } from '@apollo/client/react/components';
 import query from './query';
+import AddUser from './AddUser';
 
 export default class User extends Component {
     render() {
         return (
             <div>
+                <AddUser />
+                <hr />
                 <Query query={query}>
-                    {({ data , loading}) => {
+                    {({ data, loading }) => {
                         if (loading) {
-                            return <p>Loading...</p>
+                            return <p>Loading...</p>;
                         }
                         return (
                             <div>
