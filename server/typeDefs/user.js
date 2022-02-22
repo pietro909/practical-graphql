@@ -4,6 +4,8 @@ const { gql } = require('apollo-server-express');
  * Only user-related definitions
  */
 const typeDefs = gql`
+    scalar CloudinaryOptions
+
     extend type Query {
         me: User
         users: [User]!
@@ -21,7 +23,7 @@ const typeDefs = gql`
         id: ID!
         name: String!
         username: String!
-        photo: String
+        photo(options: CloudinaryOptions): String
         cars: [Car!]!
     }
 
