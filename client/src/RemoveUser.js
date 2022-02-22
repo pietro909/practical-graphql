@@ -20,7 +20,6 @@ export default class RemoveUser extends Component {
                             removeUser({
                                 variables: { id: this.props.id },
                             });
-                            this.resetFields();
                         }}
                     >
                         <span>Delete</span>

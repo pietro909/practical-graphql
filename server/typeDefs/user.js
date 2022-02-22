@@ -13,6 +13,7 @@ const typeDefs = gql`
     extend type Mutation {
         registerUser(name: String!, username: String!, password: String!): User
         removeUser(id: ID!): Boolean
+        login(username: String!, password: String!): Token!
     }
 
     type User {
@@ -20,6 +21,10 @@ const typeDefs = gql`
         name: String!
         username: String!
         cars: [Car!]!
+    }
+
+    type Token {
+        token: String!
     }
 `;
 

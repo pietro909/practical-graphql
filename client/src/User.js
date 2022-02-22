@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Query } from '@apollo/client/react/components';
 import query from './query';
-import AddUser from './AddUser';
 import RemoveUser from './RemoveUser';
+import RegisterUser from './RegisterUser';
 
 export default class User extends Component {
     render() {
         return (
             <div>
-                <AddUser />
+                <RegisterUser />
                 <hr />
                 <Query query={query}>
                     {({ data, loading }) => {

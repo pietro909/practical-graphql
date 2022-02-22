@@ -1,4 +1,4 @@
-const { hashSync } = require('bcrypt');
+const bcrypt = require('bcrypt');
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('user', {
         name: { type: DataTypes.STRING },
@@ -11,8 +11,12 @@ module.exports = (sequelize, DataTypes) => {
         User.hasMany(models.Car, { onDelete: 'CASCADE' });
     };
 
+    User.prototype.validatePassword = function (password) {
+        return bcrypt.compareSync(password, this.password);
+    };
+
     User.beforeCreate((user) => {
-        user.password = hashSync(user.password, 10);
+        user.password = bcrypt.hashSync(user.password, 10);
     });
     return User;
 };
